@@ -9,7 +9,7 @@ public class Main {
         System.out.println("***********************************");
         System.out.println("Nome do Cliente: " + nome);
         System.out.println("Tipo da Conta: " + tipoConta);
-        System.out.println("Saldo Atual: " + saldo);
+        System.out.println("Saldo Atual: R$" + saldo);
         System.out.println("***********************************");
 
         Scanner input = new Scanner(System.in);
@@ -26,6 +26,37 @@ public class Main {
         while (opcao != 4) {
             System.out.println(menu);
             opcao = input.nextInt();
+            double valor = 0;
+
+            switch (opcao) {
+                case 1:
+                    System.out.println("O saldo atual é: R$" + saldo + "\n");
+                break;
+
+                case 2:
+                    System.out.println("Quanto você quer transferir?");
+                    valor = input.nextDouble();
+
+                    if (valor <= saldo) {
+                        saldo -= valor;
+                        System.out.println("Novo Saldo: R$" + saldo + "\n");
+                    } else {
+                        System.out.println("Saldo Insuficiente.\n");
+                    }
+                break;
+
+                case 3:
+                    System.out.println("Quanto você vai receber?");
+                    valor = input.nextDouble();
+
+                    saldo += valor;
+                    System.out.println("Novo Saldo: R$" + saldo + "\n");
+                break;
+
+                default:
+                    System.out.println("Opção Inválida!\n");
+                break;
+            }
         }
     }
 }
